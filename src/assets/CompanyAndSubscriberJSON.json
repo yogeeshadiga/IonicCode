@@ -1,39 +1,48 @@
 [{
 	"subscribers": [{
-		"ID": "1",
+		"id": "1",
 		"name": "Satyanaryan",
-		"CompanyID": "1",
-		"RentDueAmt": "200",
-		"RentDueAsOn": "1-1-2015",
-		"RentCollected": "",
-		"RentCollectedOn": ""
+		"companyid": "1",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015",
+		"rent_collected_amt": "",
+		"rent_collected_on": ""
 	},
 	{
-		"ID": "2",
+		"id": "2",
 		"name": "Anantha Krishna",
-		"CompanyID": "1",
-		"RentDueAmt": "200",
-		"RentDueAsOn": "1-1-2015",
-		"RentCollected": "",
-		"RentCollectedOn": ""
+		"companyid": "1",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015",
+		"rent_collected_amt": "",
+		"rent_collected_on": ""
 	},
 	{
-		"ID": "3",
+		"id": "3",
 		"name": "Suresh",
-		"CompanyID": "2",
-		"RentDueAmt": "200",
-		"RentDueAsOn": "1-1-2015",
-		"RentCollected": "",
-		"RentCollectedOn": ""
+		"companyid": "2",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015",
+		"rent_collected_amt": "",
+		"rent_collected_on": ""
+	},
+	{
+		"id": "4",
+		"name": "Ram",
+		"companyid": "2",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015",
+		"rent_collected_amt": "",
+		"rent_collected_on": ""
 	}]
 },
 {
 	"company": [{
-		"ID": "1",
-		"Name": "Dwaraka Cable"
+		"id": "1",
+		"name": "Dwaraka Cable"
 	},
 	{
-		"ID": "2",
-		"Name": "Mukambika Cable"
+		"id": "2",
+		"name": "Mukambika Cable"
 	}]
 }]

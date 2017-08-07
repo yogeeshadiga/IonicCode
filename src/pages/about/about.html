@@ -9,10 +9,9 @@
 <ion-content padding>
   <button ion-button color="secondary" (click)="printHello()">Click me!</button>
 {{companies}}
-  <ion-item *ngFor="let item of companies">
-
-    <h2>{{item.ID}}</h2>
-    <p>{{item.Name}}</p>
+  <ion-item *ngFor="let item of subscribers">
+    <h2>{{item.id}}</h2>
+    <p>{{item.name}}</p>
     <button ion-button clear item-end (click)="itemSelected(item)">Edit</button>
   </ion-item>
 </ion-content>

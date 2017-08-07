@@ -22,11 +22,8 @@ companies: any = [];
 
   public ionViewDidLoad() {
     let comp = this.cableAPI.getCompanies().then(data=> this.companies = data);
-    console.log(comp);
-    console.log('here');
     let selectecComp = this.cableAPI.getSubscriberData(1).subscribe(data => {
-      //this.subscribers = data.currentCompanySubscribers;
-      console.log(this.subscribers);
+      this.subscribers = data;
     });
   }
 
@@ -36,6 +33,7 @@ companies: any = [];
         this.subscribers = data;
       });
   }
+
   itemSelected(item) {
     console.log(item);
   }
