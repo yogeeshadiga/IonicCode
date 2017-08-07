@@ -15,7 +15,7 @@ export class CableAPI {
 
   getCompanies() {
     return new Promise(resolve => {
-      this.http.get('${this.baseURL}/1/company.json')
+      this.http.get(`${this.baseURL}/1/company.json`)
         .subscribe(res => resolve(res.json()));
     });
   }

@@ -13,6 +13,7 @@ export class AboutPage {
   { id: 5, name: 'BatGirl' },
   { id: 3, name: 'Robin' },
   { id: 4, name: 'Flash' }];
+companies: any = [];
 
   constructor(public navCtrl: NavController, private platform: Platform,
     public http: Http, private cableAPI: CableAPI) {
@@ -20,6 +21,8 @@ export class AboutPage {
   }
 
   public ionViewDidLoad() {
+    let comp = this.cableAPI.getCompanies().then(data=> this.companies = data);
+    console.log(comp);
     console.log('here');
     let selectecComp = this.cableAPI.getSubscriberData(1).subscribe(data => {
       //this.subscribers = data.currentCompanySubscribers;
