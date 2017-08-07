@@ -1,0 +1,35 @@
+[ {
+  "subscribers" : [ {
+    "CompanyID" : "1",
+    "ID" : "1",
+    "RentCollected" : "",
+    "RentCollectedOn" : "",
+    "RentDueAmt" : "200",
+    "RentDueAsOn" : "1-1-2015",
+    "name" : "Satyanaryan"
+  }, {
+    "CompanyID" : "1",
+    "ID" : "2",
+    "RentCollected" : "",
+    "RentCollectedOn" : "",
+    "RentDueAmt" : "200",
+    "RentDueAsOn" : "1-1-2015",
+    "name" : "Anantha Krishna"
+  }, {
+    "CompanyID" : "2",
+    "ID" : "3",
+    "RentCollected" : "",
+    "RentCollectedOn" : "",
+    "RentDueAmt" : "200",
+    "RentDueAsOn" : "1-1-2015",
+    "name" : "Suresh"
+  } ]
+}, {
+  "company" : [ {
+    "ID" : "1",
+    "Name" : "Dwaraka Cable"
+  }, {
+    "ID" : "2",
+    "Name" : "Mukambika Cable"
+  } ]
+} ]

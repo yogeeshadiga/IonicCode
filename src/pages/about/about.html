@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button color="secondary" (click)="printHello()">Click me!</button>
+
+  <ion-item *ngFor="let item of subscribers">
+
+    <h2>{{item.ID}}</h2>
+    <p>{{item.name}}</p>
+    <button ion-button clear item-end (click)="itemSelected(item)">Edit</button>
+  </ion-item>
+</ion-content>

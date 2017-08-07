@@ -1,0 +1,33 @@
+[
+  {
+    "subscribers": [
+      {
+        "ID": "1",
+        "name": "Satyanaryan",
+        "CompanyID": "1",
+        "RentDueAmt": "200",
+        "RentDueAsOn": "1-1-2015",
+        "RentCollected": "",
+        "RentCollectedOn": ""
+      },
+     {
+        "ID": "2",
+        "name": "Anantha Krishna",
+        "CompanyID": "1",
+        "RentDueAmt": "200",
+        "RentDueAsOn": "1-1-2015",
+        "RentCollected": "",
+        "RentCollectedOn": ""
+      },
+     {
+        "ID": "3",
+        "name": "Suresh",
+        "CompanyID": "2",
+        "RentDueAmt": "200",
+        "RentDueAsOn": "1-1-2015",
+        "RentCollected": "",
+        "RentCollectedOn": ""
+      }
+    ]
+  }
+]
