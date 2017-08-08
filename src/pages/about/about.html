@@ -17,7 +17,7 @@
   </ion-list>
 
   <ion-list inset>
-<h3>List for {{company.name}}</h3>
+<h3>List for Rahul {{company.name}}</h3>
     <ion-item *ngFor="let subscirber of subscribersCompany">
       <p>{{subscirber.id}}. {{subscirber.name}}</p>
       <button ion-button clear item-end (click)="itemSelected(subscirber)">Edit</button>
