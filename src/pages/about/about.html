@@ -8,10 +8,19 @@
 
 <ion-content padding>
   <button ion-button color="secondary" (click)="printHello()">Click me!</button>
-{{companies}}
-  <ion-item *ngFor="let item of subscribers">
-    <h2>{{item.id}}</h2>
-    <p>{{item.name}}</p>
-    <button ion-button clear item-end (click)="itemSelected(item)">Edit</button>
-  </ion-item>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of filteredSubscribers">
+      {{ item.name }}
+    </ion-item>
+  </ion-list>
+
+  <ion-list inset>
+<h3>List for {{company.name}}</h3>
+    <ion-item *ngFor="let subscirber of subscribersCompany">
+      <p>{{subscirber.id}}. {{subscirber.name}}</p>
+      <button ion-button clear item-end (click)="itemSelected(subscirber)">Edit</button>
+    </ion-item>
+  </ion-list>
 </ion-content>
