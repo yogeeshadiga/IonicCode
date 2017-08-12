@@ -25,8 +25,17 @@ company: any = [];
     });*/
   }
 
-  getSubscriberData(compID) : Observable<any> {
+  getSubscriberData(compID, areaID) : Observable<any> {
     return this.http.get(`${this.baseURL}/0/subscribers.json`)
+      .map((response: Response) => {
+        this.currentCompanySubscribers = response.json();
+        return this.currentCompanySubscribers;
+
+      });
+  }
+
+  getAreaData(compID) : Observable<any> {
+    return this.http.get(`${this.baseURL}/2/area.json`)
       .map((response: Response) => {
         this.currentCompanySubscribers = response.json();
         return this.currentCompanySubscribers;

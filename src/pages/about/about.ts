@@ -16,25 +16,32 @@ export class AboutPage {
   filteredSubscribers = [];
   subscribersCompany = [];
 
+  selectedCompany: any = [];
+  selectedAreas:  any = [];
+
   companies: any = [];
   company: any;
+  filterSetting: { companyIDSelected: string, areaIDSelected: string };
+
   constructor(public navCtrl: NavController, private platform: Platform,
     private navParam: NavParams,
     public http: Http, private cableAPI: CableAPI) {
-    console.log(navParam);
-    this.company = this.navParam.data;
-    console.log(this.company.name);
+    //console.log(this.navParam.get('selectedCompany'));
+
+    this.selectedCompany = this.navParam.get('selectedCompany');
+    this.selectedAreas = this.navParam.get('selectedAreas');
+    //console.log(this.filterSetting);
   }
 
   public ionViewDidLoad() {
     //let comp = this.cableAPI.getCompanies().then(data => this.companies = data);
-    let selectecComp = this.cableAPI.getSubscriberData(1).subscribe(data => {
+    let selectecComp = this.cableAPI.getSubscriberData(1, 1).subscribe(data => {
       this.subscribers = this.filteredSubscribers = data;
     });
   }
 
   public printHello() {
-    let selectecComp = this.cableAPI.getSubscriberData(1).subscribe(
+    let selectecComp = this.cableAPI.getSubscriberData(1, 1).subscribe(
       data => {
         this.subscribers = data;
       });

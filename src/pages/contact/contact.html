@@ -11,7 +11,12 @@
     <ion-list-header>Follow us on Twitter</ion-list-header>
     <ion-item>
       <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+
+      <button full (click)="getGeoLocation()">Get Location</button>
+<div *ngIf="location">
+  Latitude:{{location.lat}}
+  Longitude:{{location.lng}}
+</div>
     </ion-item>
     <ion-item>
     <ion-label floating>Username</ion-label>

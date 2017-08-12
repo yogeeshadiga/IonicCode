@@ -9,7 +9,13 @@ import { AboutPage } from '../about/about';
 })
 export class HomePage {
 
+  myDate: String = new Date().toISOString();
   companies: any = [];
+  areasInCompany: any = [];
+
+  selectedCompany: any = [];
+  selectedAreas: any = [];
+
   constructor(public navCtrl: NavController, private cableAPI: CableAPI) {
 
   }
@@ -18,9 +24,19 @@ export class HomePage {
     let comp = this.cableAPI.getCompanies().subscribe(data => {
       this.companies = data;
     });
-    console.log(this.companies);
+    let area = this.cableAPI.getAreaData(1).subscribe(data => {
+      this.areasInCompany = data;
+    });
+    //console.log(this.companies);
   }
   public gotoAbout(item) {
-    this.navCtrl.push(AboutPage, item);
+    //console.log(this.selectedAreaID);
+
+    //this.navCtrl.push(AboutPage, item);
   }
+
+  public gotoAboutPage() {
+    this.navCtrl.push(AboutPage, { selectedCompany: this.selectedCompany, selectedAreas: this.selectedAreas });
+  }
+
 }

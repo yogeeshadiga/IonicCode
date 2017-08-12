@@ -3,6 +3,7 @@
 		"id": "1",
 		"name": "Satyanaryan",
 		"companyid": "1",
+		"areaid": "1",
 		"rent_due_amt": "200",
 		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
@@ -12,6 +13,7 @@
 		"id": "2",
 		"name": "Anantha Krishna",
 		"companyid": "1",
+		"areaid": "1",
 		"rent_due_amt": "200",
 		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
@@ -21,6 +23,7 @@
 		"id": "3",
 		"name": "Suresh",
 		"companyid": "2",
+		"areaid": "2",
 		"rent_due_amt": "200",
 		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
@@ -30,6 +33,17 @@
 		"id": "4",
 		"name": "Ram",
 		"companyid": "2",
+		"areaid": "3",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015",
+		"rent_collected_amt": "",
+		"rent_collected_on": ""
+	},
+	{
+		"id": "5",
+		"name": "Naresh",
+		"companyid": "2",
+		"areaid": "4",
 		"rent_due_amt": "200",
 		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
@@ -44,5 +58,27 @@
 	{
 		"id": "2",
 		"name": "Mukambika Cable"
+	}]
+},
+{
+	"area": [{
+		"id": "1",
+		"companyid": "1",
+		"areaname": "Vijayanagar 1st Main 1st Cross"
+	},
+	{
+		"id": "2",
+		"companyid": "1",
+		"areaname": "Vijayanagar 2nd Main 2nd Cross"
+	},
+	{
+		"id": "3",
+		"companyid": "2",
+		"areaname": "Sarvodaya School Road"
+	},
+	{
+		"id": "4",
+		"companyid": "2",
+		"areaname": "Devanoor 3rd Main Road"
 	}]
 }]
