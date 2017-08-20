@@ -71,3 +71,8 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+https://ionicframework.com/docs/native/sqlite/
+
+https://ionicframework.com/docs/native/sqlite-porter/
+
+ionic cordova plugin add uk.co.workingedge.cordova.plugin.sqliteporter
