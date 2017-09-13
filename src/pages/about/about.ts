@@ -8,16 +8,17 @@ import { CableAPI } from '../../app/shared/shared';
   templateUrl: 'about.html'
 })
 export class AboutPage {
-  subscribers = [{ id: 1, name: 'Superman' },
+  subscribers: any = [];/* =
+   [{ id: 1, name: 'Superman' },
   { id: 2, name: 'Batman', companyid: 1 },
   { id: 5, name: 'BatGirl', companyid: 1 },
   { id: 3, name: 'Robin', companyid: 2 },
-  { id: 4, name: 'Flash', companyid: 2 }];
+  { id: 4, name: 'Flash', companyid: 2 }];*/
   filteredSubscribers = [];
   subscribersCompany = [];
 
   selectedCompany: any = [];
-  selectedAreas:  any = [];
+  selectedAreas: any = [];
 
   companies: any = [];
   company: any;
@@ -45,11 +46,17 @@ export class AboutPage {
       data => {
         this.subscribers = data;
       });
+      //console.log(this.subscribers);
 
-    this.subscribersCompany = this.subscribers.filter((item) => {
-      return item.id == this.company.id;
+    this.filteredSubscribers = this.subscribers.filter((item) => {
+      console.log("item="); //this.subscribers);
+      console.log(this.selectedAreas);
+      //return true; item.companyid == this.selectedCompany &&
+      console.log(this.selectedAreas.indexOf(item.areaid));
+      return item.companyid == this.selectedCompany && this.selectedAreas.indexOf(item.areaid) > -1;
     });
-    console.log(this.subscribersCompany);
+
+    console.log(this.subscribers)
   }
 
   itemSelected(item) {
