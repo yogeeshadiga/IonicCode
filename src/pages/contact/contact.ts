@@ -9,9 +9,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class ContactPage {
   location: { lat: number, lng: number };
 
-  constructor(public navCtrl: NavController,
-    private geolocation: Geolocation) { }
-
+  constructor(public navCtrl: NavController)//,    private geolocation: Geolocation)
+  { }
+/*
   public getGeoLocation() {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.location = {
@@ -21,6 +21,6 @@ export class ContactPage {
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-  }
+  }*/
 }
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Platform, NavController, NavParams } from 'ionic-angular';
+import { Platform, NavController, NavParams, List } from 'ionic-angular';
 import { CableAPI } from '../../app/shared/shared';
 
 @Component({

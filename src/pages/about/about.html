@@ -5,7 +5,7 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-<!--
+
 <ion-content padding>
   <button ion-button color="secondary" (click)="printHello()">Click me!</button>
 
@@ -13,15 +13,18 @@
   <ion-list>
     <ion-item *ngFor="let item of filteredSubscribers">
       {{ item.name }}
+      <ion-note item-end>
+        {{item.rent_due_amt}}
+      </ion-note>
+      <ion-badge color="danger" ngi item-end > {{item.rent_due_amt}}</ion-badge>
     </ion-item>
   </ion-list>
-
+  <!--
   <ion-list inset>
 <h3>List for Rahul {{company.name}}</h3>
     <ion-item *ngFor="let subscirber of subscribersCompany">
       <p>{{subscirber.id}}. {{subscirber.name}}</p>
       <button ion-button clear item-end (click)="itemSelected(subscirber)">Edit</button>
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 </ion-content>
--->
