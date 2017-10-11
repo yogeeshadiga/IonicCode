@@ -3,6 +3,8 @@ import { HttpModule } from "@angular/http";
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { IonicStorageModule } from'@ionic/storage';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -26,6 +28,7 @@ import { DatabaseProvider } from '../providers/database/database';
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -39,7 +42,7 @@ import { DatabaseProvider } from '../providers/database/database';
   providers: [
     StatusBar,
     SplashScreen,
-    CableAPI,
+    CableAPI, SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider
   ]

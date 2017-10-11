@@ -36,6 +36,7 @@ export class HomePage {
   }
 
   public gotoAboutPage() {
+    console.log("in home page:", this.selectedCompany);
     this.navCtrl.push(AboutPage, { selectedCompany: this.selectedCompany, selectedAreas: this.selectedAreas });
   }
 

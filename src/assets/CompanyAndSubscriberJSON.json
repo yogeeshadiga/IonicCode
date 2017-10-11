@@ -1,53 +1,53 @@
 [{
 	"subscribers": [{
+		"areaid": "1",
+		"companyid": "1",
 		"id": "1",
 		"name": "Satyanaryan",
-		"companyid": "1",
-		"areaid": "1",
-		"rent_due_amt": "200",
-		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
-		"rent_collected_on": ""
+		"rent_collected_on": "",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015"
 	},
 	{
+		"areaid": "1",
+		"companyid": "1",
 		"id": "2",
 		"name": "Anantha Krishna",
-		"companyid": "1",
-		"areaid": "1",
-		"rent_due_amt": "200",
-		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
-		"rent_collected_on": ""
+		"rent_collected_on": "",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015"
 	},
 	{
+		"areaid": "2",
+		"companyid": "2",
 		"id": "3",
 		"name": "Suresh",
-		"companyid": "2",
-		"areaid": "2",
-		"rent_due_amt": "200",
-		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
-		"rent_collected_on": ""
+		"rent_collected_on": "",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015"
 	},
 	{
+		"areaid": "3",
+		"companyid": "2",
 		"id": "4",
 		"name": "Ram",
-		"companyid": "2",
-		"areaid": "3",
-		"rent_due_amt": "200",
-		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
-		"rent_collected_on": ""
+		"rent_collected_on": "",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015"
 	},
 	{
+		"areaid": "4",
+		"companyid": "2",
 		"id": "5",
 		"name": "Naresh",
-		"companyid": "2",
-		"areaid": "4",
-		"rent_due_amt": "200",
-		"rent_due_as_on_date": "1-1-2015",
 		"rent_collected_amt": "",
-		"rent_collected_on": ""
+		"rent_collected_on": "",
+		"rent_due_amt": "200",
+		"rent_due_as_on_date": "1-1-2015"
 	}]
 },
 {
@@ -62,23 +62,113 @@
 },
 {
 	"area": [{
-		"id": "1",
+		"areaname": "Vijayanagar 1st Main 1st Cross",
 		"companyid": "1",
-		"areaname": "Vijayanagar 1st Main 1st Cross"
+		"id": "1"
 	},
 	{
-		"id": "2",
+		"areaname": "Vijayanagar 2nd Main 2nd Cross",
 		"companyid": "1",
-		"areaname": "Vijayanagar 2nd Main 2nd Cross"
+		"id": "2"
 	},
 	{
-		"id": "3",
+		"areaname": "Sarvodaya School Road",
 		"companyid": "2",
-		"areaname": "Sarvodaya School Road"
+		"id": "3"
 	},
 	{
-		"id": "4",
+		"areaname": "Devanoor 3rd Main Road",
 		"companyid": "2",
-		"areaname": "Devanoor 3rd Main Road"
+		"id": "4"
+	}]
+},
+{
+	"company": [{
+		"name": "Dwaraka Cable",
+		"company_id": "1",
+		"areas": [{
+			"name": "1st Cross 2nd Main",
+			"area_id": "1",
+			"subscribers": [{
+				"name": "Satyanarayana",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "1"
+			}]
+		},
+		{
+			"name": "2nd Cross 3rd Main",
+			"area_id": "2",
+			"subscribers": [{
+				"name": "Shiva",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "1"
+			},
+			{
+				"name": "Vishnu",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "2"
+			},
+			{
+				"name": "Chandru",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "3"
+			}]
+		}]
+	},
+	{
+		"name": "Mukambika Cable",
+		"company_id": "2",
+		"areas": [{
+			"name": "10th Cross 4th Main",
+			"area_id": "1",
+			"subscribers": [{
+				"name": "Veerendra",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "1"
+			}]
+		},
+		{
+			"name": "22nd Cross 13th Main",
+			"area_id": "2",
+			"subscribers": [{
+				"name": "Venugopal",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "1"
+			},
+			{
+				"name": "John",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "2"
+			},
+			{
+				"name": "Padma",
+				"amount_due": "200",
+				"amount_paid": "",
+				"due_date": "1-Aug-2017",
+				"paid_date": "",
+				"subscriber_id": "3"
+			}]
+		}]
 	}]
 }]

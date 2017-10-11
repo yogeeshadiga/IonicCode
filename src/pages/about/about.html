@@ -10,13 +10,25 @@
   <button ion-button color="secondary" (click)="printHello()">Click me!</button>
 
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list>
+  <!--<ion-list>
+      <ul ng-repeat="(key, value) in filteredSubscribers | groupBy: 'areaid'">
+        <li class="item-divider">Group name: {{ key }}</li>
+        <li class="item" ng-repeat="item in value">
+          player: {{ item }}
+        </li>
+      </ul>
+    </ion-list>-->
+
+  <ion-list *ngFor="let area of uniqueAreas ">
+    <ion-list-header>{{ area }}</ion-list-header>
     <ion-item *ngFor="let item of filteredSubscribers">
-      {{ item.name }}
+
       <ion-note item-end>
         {{item.rent_due_amt}}
       </ion-note>
-      <ion-badge color="danger" ngi item-end > {{item.rent_due_amt}}</ion-badge>
+      <ion-badge color="danger" ngi item-end> {{item.rent_due_amt}}</ion-badge>
+<ion-label floating>{{ item.name }}</ion-label>
+<ion-input float type="text"[(ngModel)]="item.rent_collected_amt"></ion-input>
     </ion-item>
   </ion-list>
   <!--

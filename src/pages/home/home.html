@@ -9,6 +9,7 @@
   <p>
     This is UI test project for Cable App.
   </p>
+  <img src="assets/img/card-saopaolo.png"/>
 
   <ion-list>
     <ion-item *ngFor="let item of companies" (click)="gotoAbout(item)">
@@ -33,6 +34,9 @@
     </ion-item>
     <button ion-button (click)="gotoAboutPage()">Collect Payment</button>
   </ion-list>
+  <ion-fab right top>
+    <button ion-fab color="light"><ion-icon name="funnel"></ion-icon></button>
+  </ion-fab>
 </ion-content>
 
 <!--
