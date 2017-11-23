@@ -5,6 +5,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { IonicStorageModule } from'@ionic/storage';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLitePorter } from '@ionic-native/sqlite-porter';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -43,6 +44,7 @@ import { DatabaseProvider } from '../providers/database/database';
     StatusBar,
     SplashScreen,
     CableAPI, SQLite,
+    SQLitePorter,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider
   ]
