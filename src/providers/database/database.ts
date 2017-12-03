@@ -18,7 +18,7 @@ export class DatabaseProvider {
 
   constructor(public sqlitePorter: SQLitePorter, private storage: Storage,
     public plt: Platform, private sqlite: SQLite, private http: Http) {
-      this.databaseReady = new BehaviorSubject(false);
+    this.databaseReady = new BehaviorSubject(false);
     this.plt.ready().then(() => {
       this.sqlite.create({
         name: 'cable.db',
@@ -48,7 +48,7 @@ export class DatabaseProvider {
             this.getAreasForCompany(1);
             this.getSubscriberPaymentsForAreaAndMonthYear("1", "01", "2018");
 
-            let paymentmade={paid_amount:"600",payment_date:"2018-01-10", other_action:"N/M",payment_history_id:"1" };
+            let paymentmade = { paid_amount: "600", payment_date: "2018-01-10", other_action: "N/M", payment_history_id: "1" };
             this.updatePaymentHistory(paymentmade);
             this.getSubscriberPaymentsForAreaAndMonthYear("1", "01", "2018");
           })
@@ -63,7 +63,7 @@ export class DatabaseProvider {
   //method to save payments collected
   updatePaymentHistory(data) {
     this.cableDatabase.executeSql('UPDATE payment_history SET paid_amount=?,payment_date=?, other_action=? WHERE payment_history_id=?',
-                            [data.paid_amount, data.payment_date, data.other_action, data.payment_history_id])
+      [data.paid_amount, data.payment_date, data.other_action, data.payment_history_id])
       .then(res => {
         console.log("called udpate!!!");
         console.log(res);
@@ -97,7 +97,7 @@ export class DatabaseProvider {
       let areas = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          areas.push({ area_id: data.rows.item(i).area_id, area_name: data.rows.item(i).area_name, company_id: data.rows.item(i).company_id  });
+          areas.push({ area_id: data.rows.item(i).area_id, area_name: data.rows.item(i).area_name, company_id: data.rows.item(i).company_id });
         }
         console.log("areas===", areas);
       }
@@ -114,11 +114,13 @@ export class DatabaseProvider {
       let subscribersAndPaymentDetails = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          subscribersAndPaymentDetails.push({ subscriber_id: data.rows.item(i).subscriber_id, subscriber_name: data.rows.item(i).subscriber_name
+          subscribersAndPaymentDetails.push({
+            subscriber_id: data.rows.item(i).subscriber_id, subscriber_name: data.rows.item(i).subscriber_name
             , set_top_box_num: data.rows.item(i).set_top_box_num,
             payment_due_date: data.rows.item(i).payment_due_date, balance_amount: data.rows.item(i).balance_amount
             , payment_date: data.rows.item(i).payment_date, paid_amount: data.rows.item(i).paid_amount
-            , other_action: data.rows.item(i).other_action });
+            , other_action: data.rows.item(i).other_action
+          });
         }
         console.log("data:", data);
         console.log("subscribersAndPaymentDetails:", subscribersAndPaymentDetails);
