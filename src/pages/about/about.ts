@@ -26,20 +26,28 @@ export class AboutPage {
   companies: any = [];
   company: any;
   filterSetting: { companyIDSelected: string, areaIDSelected: string };
+  dbAreas: any = [];
 
   constructor(public navCtrl: NavController, private platform: Platform,
     private navParam: NavParams,
     public http: Http, private cableAPI: CableAPI,
     public storage: Storage,
-  public dbProvider: DatabaseProvider) {
+    public dbProvider: DatabaseProvider) {
     //console.log(this.navParam.get('selectedCompany'));
 
     this.selectedCompany = this.navParam.get('selectedCompany');
     this.selectedAreas = this.navParam.get('selectedAreas');
+
+    this.dbProvider.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        dbProvider.getAreasForCompany(1);
+      }
+    });
+
     console.log('selectedCompany val', this.selectedCompany);
     this.storage.set('selectedCompany', this.selectedCompany);
     this.storage.set('selectedAreas', this.selectedAreas);
-    this.storage.set('selectedFilters', {selectedCompany: this.selectedCompany, selectedAreas: this.selectedAreas});
+    this.storage.set('selectedFilters', { selectedCompany: this.selectedCompany, selectedAreas: this.selectedAreas });
   }
 
   public ionViewDidLoad() {

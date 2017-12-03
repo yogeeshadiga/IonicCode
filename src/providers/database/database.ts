@@ -18,6 +18,7 @@ export class DatabaseProvider {
 
   constructor(public sqlitePorter: SQLitePorter, private storage: Storage,
     public plt: Platform, private sqlite: SQLite, private http: Http) {
+      this.databaseReady = new BehaviorSubject(false);
     this.plt.ready().then(() => {
       this.sqlite.create({
         name: 'cable.db',
@@ -25,10 +26,10 @@ export class DatabaseProvider {
       })
         .then((db: SQLiteObject) => {
           this.cableDatabase = db;
+          console.log('Hello Cable DB');
           this.fillDatabaseFromJSON();
         })
         .catch(e => console.log(e));
-      console.log('Hello Cable DB');
     });
   }
 
@@ -39,8 +40,17 @@ export class DatabaseProvider {
         console.log('values:', sql);
         this.sqlitePorter.importJsonToDb(this.cableDatabase, sql)
           .then(data => {
+            console.log('data filled:', data);
             this.databaseReady.next(true);
             this.storage.set('database_filled', true);
+
+            this.getAllCompanies();
+            this.getAreasForCompany(1);
+            this.getSubscriberPaymentsForAreaAndMonthYear("1", "01", "2018");
+
+            let paymentmade={paid_amount:"600",payment_date:"2018-01-10", other_action:"N/M",payment_history_id:"1" };
+            this.updatePaymentHistory(paymentmade);
+            this.getSubscriberPaymentsForAreaAndMonthYear("1", "01", "2018");
           })
           .catch(e => console.error(e));
       });
@@ -52,8 +62,10 @@ export class DatabaseProvider {
 
   //method to save payments collected
   updatePaymentHistory(data) {
-    this.cableDatabase.executeSql('UPDATE payment_history SET paid_amount=?,paid_date=? WHERE rowid=?', [data.paid_amount, data.paid_date, data.rowid])
+    this.cableDatabase.executeSql('UPDATE payment_history SET paid_amount=?,payment_date=?, other_action=? WHERE payment_history_id=?',
+                            [data.paid_amount, data.payment_date, data.other_action, data.payment_history_id])
       .then(res => {
+        console.log("called udpate!!!");
         console.log(res);
       })
       .catch(e => {
@@ -66,28 +78,28 @@ export class DatabaseProvider {
       console.log("records from company");
       console.log(data);
 
-      let company = [];
+      let companies = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          company.push({ company_id: data.rows.item(i).company_id, name: data.rows.item(i).name });
+          companies.push({ company_id: data.rows.item(i).company_id, company_name: data.rows.item(i).company_name });
         }
-        console.log(company);
+        console.log(companies);
       }
     })
       .catch(e => console.error(e));
   }
 
   getAreasForCompany(_company_id) {
-    this.cableDatabase.executeSql("SELECT * FROM area WHERE company_id=?", _company_id).then((data) => {
-      console.log("records from area");
+    this.cableDatabase.executeSql("SELECT * FROM area WHERE company_id='" + _company_id + "'", []).then((data) => {
+      console.log("records from area", _company_id);
       console.log(data);
 
       let areas = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          areas.push({ area_id: data.rows.item(i).area_id, name: data.rows.item(i).name });
+          areas.push({ area_id: data.rows.item(i).area_id, area_name: data.rows.item(i).area_name, company_id: data.rows.item(i).company_id  });
         }
-        console.log(areas);
+        console.log("areas===", areas);
       }
     })
       .catch(e => console.error(e));
@@ -95,15 +107,18 @@ export class DatabaseProvider {
 
   //method to get data for selected area and due dates
   getSubscriberPaymentsForAreaAndMonthYear(_area_id, _dueMonth, _dueYear) {
-
-    return this.cableDatabase.executeSql("SELECT * FROM subscribers s INNER JOIN payment_history ph ON s.subscriber_id = ph.subscriber_id WHERE area_id=? AND strftime('%m', datetime(payment_due_date))=? AND strftime('%Y', datetime(payment_due_date))=?", [_area_id, _dueMonth, _dueYear]).then((data) => {
+    return this.cableDatabase.executeSql("SELECT * FROM subscriber_details s INNER JOIN payment_history ph ON s.subscriber_id = ph.subscriber_id WHERE area_id=? AND strftime('%m', datetime(payment_due_date))=? AND strftime('%Y', datetime(payment_due_date))=?", [_area_id, _dueMonth, _dueYear]).then((data) => {
       console.log("records from area");
       console.log(data);
 
       let subscribersAndPaymentDetails = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
-          subscribersAndPaymentDetails.push({ area_id: data.rows.item(i).area_id, subscriber_name: data.rows.item(i).subscriber_name });
+          subscribersAndPaymentDetails.push({ subscriber_id: data.rows.item(i).subscriber_id, subscriber_name: data.rows.item(i).subscriber_name
+            , set_top_box_num: data.rows.item(i).set_top_box_num,
+            payment_due_date: data.rows.item(i).payment_due_date, balance_amount: data.rows.item(i).balance_amount
+            , payment_date: data.rows.item(i).payment_date, paid_amount: data.rows.item(i).paid_amount
+            , other_action: data.rows.item(i).other_action });
         }
         console.log("data:", data);
         console.log("subscribersAndPaymentDetails:", subscribersAndPaymentDetails);
@@ -111,52 +126,4 @@ export class DatabaseProvider {
     })
       .catch(e => console.error(e));
   }
-
-  testFill() {
-
-    var json = {
-      "structure": {
-        "tables": {
-          "Artist": "([Id] PRIMARY KEY, [Title])"
-        },
-        "otherSQL": [
-          "CREATE UNIQUE INDEX Artist_ID ON Artist(Id)"
-        ]
-      },
-      "data": {
-        "inserts": {
-          "Artist": [
-            { "Id": "1", "Title": "Fred" },
-            { "Id": "2", "Title": "Bob" },
-            { "Id": "3", "Title": "Jack" },
-            { "Id": "4", "Title": "John" }
-          ]
-        }
-      }
-    };
-    console.log("data!!", json)
-    this.sqlitePorter.importJsonToDb(this.cableDatabase, json)
-      .then(data => {
-        this.databaseReady.next(true);
-        console.log("Success!!", data)
-      })
-      .catch(e => console.error(e));
-
-
-    this.cableDatabase.executeSql("SELECT * FROM Artist", []).then((data) => {
-      console.log("records from artist");
-      console.log(data);
-
-      let developers = [];
-      if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          developers.push({ Id: data.rows.item(i).Id, Title: data.rows.item(i).Title });
-        }
-        console.log(developers);
-
-      }
-    })
-      .catch(e => console.error(e));
-  }
-
 }

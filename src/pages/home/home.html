@@ -12,10 +12,10 @@
   <img src="assets/img/card-saopaolo.png"/>
 
   <ion-list>
-    <ion-item *ngFor="let item of companies" (click)="gotoAbout(item)">
+  <!--  <ion-item *ngFor="let item of companies" (click)="gotoAbout(item)">
       {{ item.id }}. {{ item.name }}
       <button ion-button> ></button>
-    </ion-item>
+    </ion-item>-->
     <ion-item>
       <ion-label>Company</ion-label>
       <ion-select multiple="false" [(ngModel)]="selectedCompany">

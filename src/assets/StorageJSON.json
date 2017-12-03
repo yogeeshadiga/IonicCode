@@ -1,23 +1,96 @@
 {
   "structure": {
     "tables": {
-      "area": "([area_id] PRIMARY KEY, [name], [company_id], [sort_oder])"
+      "company": "([company_id] PRIMARY KEY, [company_name], [sort_oder])",
+      "area": "([area_id] PRIMARY KEY, [area_name], [company_id], [sort_oder])",
+      "subscriber_details": "([subscriber_id] PRIMARY KEY, [subscriber_name], [company_id], [area_id], [sort_oder])",
+      "payment_history": "([payment_history_id] PRIMARY KEY, [payment_due_date], [balance_amount], [payment_date], [paid_amount], [other_action], [subscriber_id])"
     }
   },
   "data": {
     "inserts": {
+      "company": [
+        {
+          "company_id": "1",
+          "company_name": "DWRAKA CABLE NETWORK",
+          "sort_oder": "1"
+        },
+        {
+          "company_id": "2",
+          "company_name": "MUKAMBIKA CABLE NETWORK",
+          "sort_oder": "2"
+        }
+      ],
       "area": [
         {
           "area_id": "1",
-          "name": "Vijayanagar 1st Main 1st Cross",
+          "area_name": "Vijayanagar 1st Main 1st Cross",
           "company_id": "1",
           "sort_oder": "1"
         },
         {
           "area_id": "2",
-          "name": "Vijayanagar 2nd Main 2nd Cross",
+          "area_name": "Vijayanagar 2nd Main 2nd Cross",
           "company_id": "1",
           "sort_oder": "2"
+        },
+        {
+          "area_id": "3",
+          "area_name": "Saptagiri Badavane",
+          "company_id": "2",
+          "sort_oder": "1"
+        }
+      ],
+      "subscriber_details": [
+        {
+          "subscriber_id": "1",
+          "subscriber_name": "Satyanaryan",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "1"
+        },
+        {
+          "subscriber_id": "2",
+          "subscriber_name": "Umesh",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "2"
+        },
+        {
+          "subscriber_id": "3",
+          "subscriber_name": "Ranganatha",
+          "company_id": "2",
+          "area_id": "3",
+          "sort_oder": "2"
+        }
+      ],
+      "payment_history": [
+        {
+          "payment_history_id": "1",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "400",
+          "paid_amount": "",
+          "payment_date": "",
+          "other_action": "",
+          "subscriber_id": "1"
+        },
+        {
+          "payment_history_id": "2",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "200",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "2"
+        },
+        {
+          "payment_history_id": "3",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "300",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "3"
         }
       ]
     }
