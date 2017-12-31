@@ -1,42 +1,26 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      {{ areaDetails.area_name }}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button ion-button color="secondary" (click)="printHello()">Click me!</button>
-
+<ion-content padding class="list-avatar-page">
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <!--<ion-list>
-      <ul ng-repeat="(key, value) in filteredSubscribers | groupBy: 'areaid'">
-        <li class="item-divider">Group name: {{ key }}</li>
-        <li class="item" ng-repeat="item in value">
-          player: {{ item }}
-        </li>
-      </ul>
-    </ion-list>-->
-
-  <ion-list *ngFor="let area of uniqueAreas ">
-    <ion-list-header>{{ area }}</ion-list-header>
-    <ion-item *ngFor="let item of filteredSubscribers">
-
+  <ion-list inset *ngFor="let item of filteredSubscribers">
+    <ion-item>
+      <h2>{{ item.sort_oder }}. {{ item.subscriber_name }}</h2>
+    </ion-item>
+    <ion-item>
       <ion-note item-end>
-        {{item.rent_due_amt}}
+        {{item.balance_amount}}
       </ion-note>
-      <ion-badge color="danger" ngi item-end> {{item.rent_due_amt}}</ion-badge>
-<ion-label floating>{{ item.name }}</ion-label>
-<ion-input float type="text"[(ngModel)]="item.rent_collected_amt"></ion-input>
+      <ion-input float type="text" [(ngModel)]="item.paid_amount" (ionInputChange)="savePayment(item)" placeholder="Enter Amount Here"></ion-input>
+      <ion-badge color="secondary" ngi item-end (click)="savePayment(item)">save</ion-badge>
     </ion-item>
+    <button full ion-item (click)="savePayment(item)">
+      Button
+    </button>
   </ion-list>
-  <!--
-  <ion-list inset>
-<h3>List for Rahul {{company.name}}</h3>
-    <ion-item *ngFor="let subscirber of subscribersCompany">
-      <p>{{subscirber.id}}. {{subscirber.name}}</p>
-      <button ion-button clear item-end (click)="itemSelected(subscirber)">Edit</button>
-    </ion-item>
-  </ion-list>-->
 </ion-content>

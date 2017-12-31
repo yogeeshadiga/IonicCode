@@ -1,15 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Dashboard</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
+  <h3>Welcome!</h3>
+  <!-- <p>
     This is UI test project for Cable App.
   </p>
-  <img src="assets/img/card-saopaolo.png"/>
+  <img src="assets/img/card-saopaolo.png" />-->
 
   <ion-list>
   <!--  <ion-item *ngFor="let item of companies" (click)="gotoAbout(item)">
@@ -18,25 +18,27 @@
     </ion-item>-->
     <ion-item>
       <ion-label>Company</ion-label>
-      <ion-select multiple="false" [(ngModel)]="selectedCompany">
-        <ion-option *ngFor="let item of companies" value={{item.id}} >{{ item.name }}</ion-option>
+      <ion-select multiple="false" [(ngModel)]="selectedCompany" (ionChange)="onCompanyChange($event)">
+        <ion-option *ngFor="let item of companies" value={{item.company_id}} >{{ item.company_name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Area</ion-label>
-      <ion-select okText="Okay" cancelText="Dismiss" multiple="true" [(ngModel)]="selectedAreas">
-        <ion-option *ngFor="let item of areasInCompany" value={{item.id}}>{{ item.areaname }}</ion-option>
+      <ion-select okText="Okay" cancelText="Dismiss" multiple="false" [(ngModel)]="selectedAreas">
+        <ion-option *ngFor="let item of areasInCompany" value={{item.area_id}}>{{ item.area_name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MMM YY" [(ngModel)]="myDate" item-center></ion-datetime>
+      <ion-datetime displayFormat="MMM YY" min="2016" max="2020-12-31" [(ngModel)]="myDate" item-center></ion-datetime>
     </ion-item>
-    <button ion-button (click)="gotoAboutPage()">Collect Payment</button>
+    <button ion-button full (click)="gotoAboutPage()" center icon-start>
+        <ion-icon name="card"></ion-icon>
+        Collect Payment</button>
   </ion-list>
-  <ion-fab right top>
+  <!--<ion-fab right top>
     <button ion-fab color="light"><ion-icon name="funnel"></ion-icon></button>
-  </ion-fab>
+  </ion-fab>-->
 </ion-content>
 
 <!--

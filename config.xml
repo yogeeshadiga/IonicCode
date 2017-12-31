@@ -3,7 +3,7 @@
     <name>CableApp</name>
     <description>Cable Subscriber App app.</description>
     <author email="yogeeshadiga@gmail.com" href="https://github.com/yogeeshadiga/">Yogeesha Team</author>
-    <content original-src="index.html" src="http://192.168.1.4:8100" />
+    <content original-src="index.html" src="http://192.168.1.103:8100" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />
@@ -81,6 +81,9 @@
     <allow-navigation href="http://192.168.1.93:8100" />
     <allow-navigation href="http://192.168.1.6:8100" />
     <allow-navigation href="http://192.168.1.4:8100" />
+    <allow-navigation href="http://192.168.1.111:8100" />
+    <allow-navigation href="http://192.168.1.101:8100" />
+    <allow-navigation href="http://192.168.1.103:8100" />
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
