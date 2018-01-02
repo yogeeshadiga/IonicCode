@@ -64,7 +64,7 @@ export class AboutPage {
   }
 
   public ionViewDidLoad() {
-    if (this.selectedDate && this.selectedDate!= '' && this.selectedDate.indexOf('-') > 0) {
+    if (this.selectedDate && this.selectedDate != '' && this.selectedDate.indexOf('-') > 0) {
       var dateData = this.selectedDate.split('-');
       this.dbProvider.getDatabaseState().subscribe(rdy => {
         if (rdy) {
@@ -154,6 +154,12 @@ export class AboutPage {
     this.uniqueAreas = curr.filter((x, i, a) => x && a.indexOf(x) === i);*/
   }
 
+  saveAsNextMonth(enteredValue: any) {
+    if (enteredValue && enteredValue != '') {
+      enteredValue.paid_amount = "N/M";
+      this.savePayment(enteredValue);
+    }
+  }
   savePayment(enteredValue: any) {
     if (enteredValue && enteredValue != '') {
       this.dbProvider.getDatabaseState().subscribe(rdy => {

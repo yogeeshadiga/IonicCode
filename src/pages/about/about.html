@@ -6,21 +6,36 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="list-avatar-page">
+<ion-content>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list inset *ngFor="let item of filteredSubscribers">
-    <ion-item>
-      <h2>{{ item.sort_oder }}. {{ item.subscriber_name }}</h2>
-    </ion-item>
-    <ion-item>
-      <ion-note item-end>
-        {{item.balance_amount}}
-      </ion-note>
-      <ion-input float type="text" [(ngModel)]="item.paid_amount" (ionInputChange)="savePayment(item)" placeholder="Enter Amount Here"></ion-input>
-      <ion-badge color="secondary" ngi item-end (click)="savePayment(item)">save</ion-badge>
-    </ion-item>
-    <button full ion-item (click)="savePayment(item)">
-      Button
-    </button>
+  <ion-list *ngFor="let item of filteredSubscribers">
+    <ion-item-sliding>
+      <ion-item>
+        {{ item.sort_oder }}. {{ item.subscriber_name }}
+        <ion-note item-end>
+          Due: {{item.balance_amount}}
+        </ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-input float type="text" [(ngModel)]="item.paid_amount" (change)="savePayment(item)" placeholder="Enter Amount Here"></ion-input>
+        <button ion-button (click)="saveAsNextMonth(item)" outline item-end icon-left>
+          <ion-icon name="cash"></ion-icon> N/M
+        </button>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="light" icon-start>
+          <ion-icon name="ios-more"></ion-icon>
+          More
+        </button>
+        <button ion-button color="primary" icon-start>
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+        <button ion-button color="secondary" icon-start>
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

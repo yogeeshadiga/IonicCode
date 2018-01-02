@@ -58,9 +58,51 @@
         },
         {
           "subscriber_id": "3",
+          "subscriber_name": "Ananthu",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "3"
+        },
+        {
+          "subscriber_id": "4",
+          "subscriber_name": "Shivanna",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "4"
+        },
+        {
+          "subscriber_id": "5",
+          "subscriber_name": "Rukmini Gopal",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "5"
+        },
+        {
+          "subscriber_id": "6",
+          "subscriber_name": "Ranganatha",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "6"
+        },
+        {
+          "subscriber_id": "6",
+          "subscriber_name": "Nagaraj Nayak",
+          "company_id": "1",
+          "area_id": "1",
+          "sort_oder": "6"
+        },
+        {
+          "subscriber_id": "7",
+          "subscriber_name": "Babu",
+          "company_id": "1",
+          "area_id": "2",
+          "sort_oder": "1"
+        },
+        {
+          "subscriber_id": "8",
           "subscriber_name": "Ranganatha",
           "company_id": "2",
-          "area_id": "3",
+          "area_id": "2",
           "sort_oder": "2"
         }
       ],
@@ -91,6 +133,51 @@
           "paid_amount": "",
           "other_action": "",
           "subscriber_id": "3"
+        },
+        {
+          "payment_history_id": "4",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "300",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "4"
+        },
+        {
+          "payment_history_id": "5",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "300",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "5"
+        },
+        {
+          "payment_history_id": "6",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "600",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "6"
+        },
+        {
+          "payment_history_id": "7",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "200",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "7"
+        },
+        {
+          "payment_history_id": "8",
+          "payment_due_date": "2018-01-01",
+          "balance_amount": "300",
+          "payment_date": "",
+          "paid_amount": "",
+          "other_action": "",
+          "subscriber_id": "8"
         }
       ]
     }

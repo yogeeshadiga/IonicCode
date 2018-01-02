@@ -5,7 +5,7 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 
 import { BehaviorSubject } from 'rxjs/Rx';
 
-import { Platform } from 'ionic-angular';
+import { Platform, ToastController } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 @Injectable()
@@ -17,7 +17,8 @@ export class DatabaseProvider {
   private databaseReady: BehaviorSubject<boolean>;
 
   constructor(public sqlitePorter: SQLitePorter, private storage: Storage,
-    public plt: Platform, private sqlite: SQLite, private http: Http) {
+    public plt: Platform, private sqlite: SQLite, private http: Http,
+    public toastCtrl: ToastController) {
     this.databaseReady = new BehaviorSubject(false);
     this.plt.ready().then(() => {
       this.sqlite.create({
@@ -28,6 +29,12 @@ export class DatabaseProvider {
           this.cableDatabase = db;
           console.log('Hello Cable DB');
           this.storage.get('database_filled').then(val => {
+            const toast = this.toastCtrl.create({
+              message: 'About to show value',
+              showCloseButton: true,
+              closeButtonText: 'Ok'
+            });
+            toast.present();
             if (val) {
               this.databaseReady.next(true);
             } else {
@@ -35,15 +42,24 @@ export class DatabaseProvider {
             }
           });
         })
-        .catch(e => console.log(e));
+        .catch(e =>
+          { console.log(e);
+            const toast = this.toastCtrl.create({
+              message: e,
+              showCloseButton: true,
+              closeButtonText: 'Ok'
+            });
+            toast.present();
+          });
     });
   }
 
   fillDatabaseFromJSON() {
-    this.http.get('assets/StorageJSON.json')
+    this.http.get('./assets/StorageJSON.json')
       .map(res => res.text())
       .subscribe(sql => {
         console.log('values:', sql);
+        this.sqlitePorter.wipeDb(this.cableDatabase);
         this.sqlitePorter.importJsonToDb(this.cableDatabase, sql)
           .then(data => {
             console.log('data filled:', data);
@@ -58,7 +74,17 @@ export class DatabaseProvider {
                         this.updatePaymentHistory(paymentmade);
                         this.getSubscriberPaymentsForAreaAndMonthYear("1", "01", "2018");*/
           })
-          .catch(e => console.error(e));
+          .catch(e => {
+            this.storage.set('database_errored', true);
+            console.error(e);
+            console.log(e);
+              const toast = this.toastCtrl.create({
+                message: e,
+                showCloseButton: true,
+                closeButtonText: 'Ok'
+              });
+              toast.present();
+          });
       });
   }
 
